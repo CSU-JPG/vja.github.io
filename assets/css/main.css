@@ -1144,6 +1144,51 @@ body{
   border-color: rgba(255,255,255,0.95);
 }
 
+/* 卡片整体缩小并居中（关键：容器跟着变窄） */
+#examples2 .example-card{
+  max-width: 500px;   /* 你想要的卡片宽度 */
+  margin: 0 auto;
+}
+
+/* 媒体区域居中 + 给一点内边距更好看 */
+#examples2 .example-card__media{
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  margin: 0;
+}
+
+/* 图片跟随卡片缩放：永远不超过卡片宽度 */
+#examples2 .example-card__media img{
+  width: 100%;
+  max-width: 500px;   /* 比卡片略小一点更舒服，可改成和卡片一致 */
+  height: auto;
+  display: block;
+}
+/* 1) 减少每一页 slide 自带的上下内边距（最主要的空白来源） */
+#examples2 .carousel__slide{
+  padding: 8px 12px;   /* 原来 18px -> 更紧凑 */
+}
+
+/* 2) 减少卡片媒体区域上下 padding（图片周围的空白） */
+#examples2 .example-card__media{
+  padding: 6px 10px;   /* 原来如果是 16px，就会很空 */
+  margin: 0;
+}
+
+/* 3) 如果下面 body 没内容，直接隐藏，避免多出一块白底 */
+#examples2 .example-card__body:empty{
+  display: none;
+}
+
+/* 4) 你现在 h3/p 是空标签，但 body 不是 empty（因为有空白/换行）
+      所以更稳的是直接把 body 关掉（如果你确实不显示标题/文字） */
+#examples2 .example-card__body{
+  display: none;       /* 若你后面要放文字，再删掉这一行 */
+}
+
+
+
 /* Findings：整块 hover 浮起 */
 .accordion__item{
   transform: translateY(0);
